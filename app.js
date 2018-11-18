@@ -20,8 +20,11 @@ app.set('view engine', 'ejs');
 //setup public folder 
 app.use(express.static(path.join(__dirname,'public')));
 
+//setup index
 app.get("/", function(rec,res){
-    res.send('ini adalah index dan sudah konek ke mongodb');
+    res.render('index', {
+        title: "Happy Shopping"
+    });
 });
 //setup server
 var port = 3000;
