@@ -20,12 +20,14 @@ app.set('view engine', 'ejs');
 //setup public folder 
 app.use(express.static(path.join(__dirname,'public')));
 
-//setup index
-app.get("/", function(rec,res){
-    res.render('index', {
-        title: "Happy Shopping"
-    });
-});
+//set routes
+var pages = require('./routes/pages.js');
+var adminPages = require ('./routes/admin_pages.js');
+
+//redirect
+app.use ('/', pages);
+app.use ('/admin/pages', adminPages);
+
 //setup server
 var port = 3000;
 app.listen(port, function(){
